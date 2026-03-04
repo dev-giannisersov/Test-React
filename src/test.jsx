@@ -1,16 +1,6 @@
-import { useContext } from 'react';
-import { ThemeContext } from './ThemeContext';
+import { create } from "zustand";
 
-const Test = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
-  return (
-    <div className="box">
-      <h2>Child (Test.jsx)</h2>
-      <p>Current Vibe: <strong>{theme.toUpperCase()}</strong></p>
-      <button onClick={toggleTheme}>Toggle via Child</button>
-    </div>
-  );
-};
-
-export default Test;
+export const useStore = create((set) => ({
+  count: 0,
+  inc: () => set((state) => ({ count: state.count + 1 })),
+}));
